@@ -4,53 +4,30 @@ import '../screens/input_nilai_screen.dart';
 import '../screens/data_siswa_screen.dart';
 import '../screens/profile_screen.dart';
 
-class BottomNav extends StatefulWidget {
+class BottomNav extends StatelessWidget {
   final int selectedIndex;
-
-  const BottomNav({Key? key, required this.selectedIndex}) : super(key: key);
-
-  @override
-  State<BottomNav> createState() => _BottomNavState();
-}
-
-class _BottomNavState extends State<BottomNav> {
-  void _onItemTapped(int index) {
-    switch (index) {
-      case 0:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => DashboardScreen()),
-        );
-        break;
-      case 1:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const InputNilaiScreen()),
-        );
-        break;
-      case 2:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const DataSiswaScreen()),
-        );
-        break;
-      case 3:
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const ProfileScreen()),
-        );
-        break;
-    }
-  }
+  const BottomNav({required this.selectedIndex, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> pages = [
+      const DashboardScreen(),
+      const InputNilaiScreen(),
+      const DataSiswaScreen(),
+      const ProfileScreen(),
+    ];
+
+    void _onItemTapped(int index) {
+      if (index == selectedIndex) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => pages[index]),
+      );
+    }
+
     return BottomNavigationBar(
-      currentIndex: widget.selectedIndex,
+      currentIndex: selectedIndex,
       onTap: _onItemTapped,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
-      type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(
             icon: Icon(Icons.dashboard), label: 'Dashboard'),

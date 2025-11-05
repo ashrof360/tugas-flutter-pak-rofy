@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'providers/rapor_provider.dart';
+
 import 'screens/login_screen.dart';
+import 'screens/dashboard_screen.dart';
+import 'screens/input_nilai_screen.dart';
+import 'screens/data_siswa_screen.dart';
+import 'screens/profile_screen.dart';
 
 void main() {
   runApp(const RaporApp());
@@ -20,8 +25,15 @@ class RaporApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           brightness: Brightness.light,
         ),
-        home: const LoginScreen(),
+        initialRoute: '/',
         debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => const LoginScreen(),
+          '/dashboard': (context) => const DashboardScreen(),
+          '/input-nilai': (context) => const InputNilaiScreen(),
+          '/data-siswa': (context) => const DataSiswaScreen(),
+          '/profile': (context) => const ProfileScreen(),
+        },
       ),
     );
   }

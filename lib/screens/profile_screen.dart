@@ -48,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNav(selectedIndex: 4),
+      bottomNavigationBar: const BottomNav(selectedIndex: 3),
     );
   }
 }

@@ -95,7 +95,8 @@ class _ActionCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 36, color: Colors.blueAccent),
+              Icon(icon,
+                  size: 36, color: const Color.fromARGB(255, 48, 55, 69)),
               const SizedBox(height: 12),
               Text(
                 label,
